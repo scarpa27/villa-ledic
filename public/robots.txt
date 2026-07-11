@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# TODO: uncomment and update with the real production URL before deployment
+# Sitemap: https://yourdomain.com/sitemap.xml

@@ -1,0 +1,10 @@
+# Allows direct visits to React routes such as /blog and /accommodation/a1.
+# For a site deployed in a subfolder, ask the host for the matching rewrite
+# configuration or change RewriteBase to that folder path.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^ index.html [L]
+</IfModule>

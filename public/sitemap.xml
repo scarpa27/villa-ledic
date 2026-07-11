@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- TODO: replace SITE_URL below with the real production domain before deployment -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>SITE_URL/</loc>
+  </url>
+  <url>
+    <loc>SITE_URL/accommodation</loc>
+  </url>
+  <url>
+    <loc>SITE_URL/gallery</loc>
+  </url>
+  <url>
+    <loc>SITE_URL/explore</loc>
+  </url>
+  <url>
+    <loc>SITE_URL/blog</loc>
+  </url>
+  <url>
+    <loc>SITE_URL/contact</loc>
+  </url>
+</urlset>
