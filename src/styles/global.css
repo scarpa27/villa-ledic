@@ -1,0 +1,882 @@
+:root {
+  --color-gold: #c6a56a;
+  --color-charcoal: #2e2e2e;
+  --color-cream: #faf8f3;
+  --color-white: #ffffff;
+  --color-muted: #6f6f6f;
+
+  --font-heading: "Playfair Display", serif;
+  --font-body: "Inter", sans-serif;
+
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.125rem;
+
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 28px;
+
+  --shadow-soft: 0 18px 50px rgba(0, 0, 0, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--font-size-md);
+  color: var(--color-charcoal);
+  background-color: var(--color-cream);
+}
+
+a {
+  text-decoration: none;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-gold);
+  outline-offset: 3px;
+}
+
+.navbar {
+  background-color: var(--color-white);
+  border-bottom: 1px solid rgba(46, 46, 46, 0.08);
+  padding-top: 18px;
+  padding-bottom: 18px;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-heading);
+  letter-spacing: 0.08em;
+  color: var(--color-charcoal);
+}
+
+.navbar-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.navbar-brand-text {
+  line-height: 1;
+}
+
+.nav-link {
+  color: var(--color-charcoal);
+  font-size: 0.95rem;
+  padding-left: 14px;
+  padding-right: 14px;
+}
+
+.nav-link:hover {
+  color: var(--color-gold);
+}
+
+/* Highlights the nav link that matches the current page */
+.nav-link-active {
+  color: var(--color-gold);
+  font-weight: 600;
+}
+
+/* Small WhatsApp call-to-action button inside the navbar */
+.navbar-whatsapp-button {
+  display: inline-block;
+  background-color: var(--color-gold);
+  color: var(--color-white);
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 999px;
+  margin-left: 8px;
+}
+
+.navbar-whatsapp-button:hover {
+  color: var(--color-white);
+  opacity: 0.9;
+}
+
+.whatsapp-button {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 1000;
+  background-color: var(--color-gold);
+  color: var(--color-white);
+  padding: 12px 18px;
+  border-radius: 999px;
+  font-weight: 600;
+  box-shadow: var(--shadow-soft);
+}
+
+.whatsapp-button:hover {
+  color: var(--color-white);
+  transform: translateY(-2px);
+}
+
+/* On small screens the button is smaller and sits a bit higher so it
+   doesn't cover card text or buttons in stacked mobile layouts. */
+@media (max-width: 576px) {
+  .whatsapp-button {
+    right: 16px;
+    bottom: 88px;
+    padding: 10px 14px;
+    font-size: 0.85rem;
+  }
+
+  /* Reserve extra space at the bottom of every page so the button always
+     floats over empty space instead of the last piece of content
+     (e.g. the footer text or the last card's button). */
+  body {
+    padding-bottom: 72px;
+  }
+}
+
+/* Hero section (Home page) */
+.hero {
+  padding: 88px 0;
+}
+
+.hero-label {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-gold);
+  margin-bottom: 16px;
+}
+
+.hero-heading {
+  font-family: var(--font-heading);
+  font-size: 3.5rem;
+  line-height: 1.15;
+  color: var(--color-charcoal);
+  margin-bottom: 24px;
+}
+
+.hero-text {
+  color: var(--color-muted);
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.hero-buttons .btn {
+  padding: 14px 32px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hero-buttons .btn-primary {
+  background-color: var(--color-gold);
+  border-color: var(--color-gold);
+  color: var(--color-white);
+  box-shadow: 0 10px 24px rgba(198, 165, 106, 0.35);
+}
+
+.hero-buttons .btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(198, 165, 106, 0.45);
+}
+
+.hero-buttons .btn-outline-secondary {
+  color: var(--color-charcoal);
+  border-color: var(--color-charcoal);
+}
+
+.hero-buttons .btn-outline-secondary:hover {
+  transform: translateY(-2px);
+}
+
+/* Wrapper controls the size/shape of the hero photo and holds the overlay */
+.hero-image-wrapper {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.18);
+}
+
+.hero-image {
+  display: block;
+  width: 100%;
+  height: 560px;
+  object-fit: cover;
+}
+
+/* Subtle dark gradient over the bottom of the photo so any future text/badges
+   placed on top of it stay easy to read, and the photo feels more premium */
+.hero-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.28) 0%,
+    rgba(0, 0, 0, 0) 45%
+  );
+  pointer-events: none;
+}
+
+@media (max-width: 991px) {
+  .hero-image {
+    height: 360px;
+  }
+}
+
+/* Mobile hero polish: smaller heading, tighter section padding, and
+   full-width buttons that are easier to tap with a thumb. */
+@media (max-width: 576px) {
+  .hero {
+    padding: 56px 0;
+  }
+
+  .hero-heading {
+    font-size: 2.25rem;
+    margin-bottom: 16px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+  }
+
+  .hero-buttons .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .hero-image {
+    height: 280px;
+  }
+}
+
+/* QuickInfo section (Home page) */
+.quick-info {
+  padding: 32px 0 64px;
+}
+
+.quick-info-item {
+  background-color: var(--color-white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  padding: 24px;
+  height: 100%;
+  margin-bottom: 24px;
+}
+
+/* Small gold circular badge that holds the emoji icon for each item */
+.quick-info-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: var(--color-gold);
+  font-size: 1.4rem;
+  margin-bottom: 16px;
+}
+
+.quick-info-label {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  color: var(--color-gold);
+  margin-bottom: 12px;
+}
+
+.quick-info-title {
+  font-size: 1.1rem;
+  color: var(--color-charcoal);
+  margin-bottom: 8px;
+}
+
+.quick-info-text {
+  color: var(--color-muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 0;
+}
+
+/* About section (Home page) */
+.about-section {
+  padding: 32px 0 64px;
+}
+
+.section-title {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-gold);
+  margin-bottom: 12px;
+}
+
+.about-image {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  margin-bottom: 24px;
+}
+
+.about-heading {
+  font-family: var(--font-heading);
+  font-size: 2.25rem;
+  color: var(--color-charcoal);
+  margin-bottom: 20px;
+}
+
+.about-text {
+  color: var(--color-muted);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin-bottom: 28px;
+}
+
+.about-buttons {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.about-buttons .btn-primary {
+  background-color: var(--color-gold);
+  border-color: var(--color-gold);
+  color: var(--color-white);
+}
+
+.about-buttons .btn-outline-secondary {
+  color: var(--color-charcoal);
+  border-color: var(--color-charcoal);
+}
+
+/* Accommodation preview section (Home page) */
+.accommodation-preview {
+  padding: 32px 0 64px;
+}
+
+.apartment-card {
+  background-color: var(--color-white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+  height: 100%;
+  margin-bottom: 24px;
+}
+
+.apartment-card-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.apartment-card-body {
+  padding: 24px;
+}
+
+.apartment-card-title {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  color: var(--color-charcoal);
+  margin-bottom: 8px;
+}
+
+.apartment-card-guests {
+  color: var(--color-gold);
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.apartment-card-text {
+  color: var(--color-muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.apartment-card-button {
+  background-color: var(--color-gold);
+  border-color: var(--color-gold);
+  color: var(--color-white);
+}
+
+.apartment-card-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+}
+
+.apartment-card-feature {
+  position: relative;
+  padding-left: 16px;
+  margin-bottom: 8px;
+  color: var(--color-muted);
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.apartment-card-feature::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--color-gold);
+}
+
+/* Gallery preview section (Home page) */
+.gallery-preview {
+  padding: 32px 0 64px;
+}
+
+.gallery-heading {
+  font-family: var(--font-heading);
+  font-size: 2.25rem;
+  color: var(--color-charcoal);
+  margin-bottom: 20px;
+}
+
+.gallery-text {
+  color: var(--color-muted);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin-bottom: 28px;
+  max-width: 640px;
+}
+
+.gallery-image {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  margin-bottom: 24px;
+}
+
+/* Explore preview section (Home page) */
+.explore-preview {
+  padding: 32px 0 64px;
+}
+
+.explore-heading {
+  font-family: var(--font-heading);
+  font-size: 2.25rem;
+  color: var(--color-charcoal);
+  margin-bottom: 20px;
+}
+
+.explore-text {
+  color: var(--color-muted);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin-bottom: 28px;
+  max-width: 640px;
+}
+
+.explore-item {
+  background-color: var(--color-white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  padding: 24px;
+  height: 100%;
+  margin-bottom: 24px;
+}
+
+.explore-item-title {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  color: var(--color-charcoal);
+  margin-bottom: 8px;
+}
+
+.explore-item-text {
+  color: var(--color-muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 0;
+}
+
+/* Blog preview section (Home page) */
+.blog-preview {
+  padding: 32px 0 64px;
+}
+
+.blog-heading {
+  font-family: var(--font-heading);
+  font-size: 2.25rem;
+  color: var(--color-charcoal);
+  margin-bottom: 20px;
+}
+
+.blog-text {
+  color: var(--color-muted);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin-bottom: 28px;
+  max-width: 640px;
+}
+
+.blog-card {
+  background-color: var(--color-white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  padding: 24px;
+  height: 100%;
+  margin-bottom: 24px;
+}
+
+.blog-card-category {
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-gold);
+  margin-bottom: 12px;
+}
+
+.blog-card-title {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  color: var(--color-charcoal);
+  margin-bottom: 8px;
+}
+
+.blog-card-excerpt {
+  color: var(--color-muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.blog-card-date {
+  color: var(--color-muted);
+  font-size: 0.85rem;
+  margin-bottom: 0;
+}
+
+.blog-card-link {
+  display: inline-block;
+  margin-top: 16px;
+  color: var(--color-gold);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+}
+
+.blog-card-link:hover {
+  color: var(--color-charcoal);
+}
+
+.blog-status {
+  color: var(--color-muted);
+  margin-bottom: 24px;
+}
+
+.blog-status-error {
+  color: #a33a3a;
+}
+
+.blog-preview-button {
+  color: var(--color-charcoal);
+  border-color: var(--color-charcoal);
+}
+
+/* Contact CTA section (Home page) */
+.contact-cta {
+  padding: 64px 0;
+  background-color: var(--color-charcoal);
+  text-align: center;
+}
+
+.contact-cta-heading {
+  font-family: var(--font-heading);
+  font-size: 2.25rem;
+  color: var(--color-white);
+  margin-bottom: 16px;
+}
+
+.contact-cta-text {
+  color: var(--color-cream);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  max-width: 640px;
+  margin: 0 auto 32px;
+}
+
+.contact-cta-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.contact-cta-btn-primary {
+  background-color: var(--color-gold);
+  color: var(--color-charcoal);
+  border: none;
+}
+
+.contact-cta-btn-secondary {
+  color: var(--color-white);
+  border-color: var(--color-white);
+}
+
+/* Accommodation page */
+.accommodation-page {
+  padding: 64px 0;
+}
+
+.accommodation-header {
+  max-width: 720px;
+  margin: 0 auto 48px;
+  text-align: center;
+}
+
+.accommodation-title {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  color: var(--color-charcoal);
+  margin-bottom: 12px;
+}
+
+.accommodation-subtitle {
+  color: var(--color-gold);
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+.accommodation-intro {
+  color: var(--color-muted);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+/* Gallery page */
+.gallery-page {
+  padding: 64px 0;
+}
+
+.gallery-header {
+  max-width: 720px;
+  margin: 0 auto 48px;
+  text-align: center;
+}
+
+.gallery-title {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  color: var(--color-charcoal);
+  margin-bottom: 12px;
+}
+
+.gallery-subtitle {
+  color: var(--color-gold);
+  font-size: 1.1rem;
+  margin-bottom: 0;
+}
+
+/* Contact page */
+.contact-page {
+  padding: 64px 0;
+}
+
+.contact-header {
+  max-width: 720px;
+  margin: 0 auto 48px;
+  text-align: center;
+}
+
+.contact-title {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  color: var(--color-charcoal);
+  margin-bottom: 12px;
+}
+
+.contact-subtitle {
+  color: var(--color-gold);
+  font-size: 1.1rem;
+  margin-bottom: 0;
+}
+
+.contact-card {
+  display: block;
+  background-color: var(--color-white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  padding: 32px 24px;
+  margin-bottom: 24px;
+  text-align: center;
+  color: var(--color-charcoal);
+}
+
+.contact-card-title {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  color: var(--color-gold);
+  margin-bottom: 8px;
+}
+
+.contact-card-text {
+  color: var(--color-muted);
+  margin-bottom: 0;
+  word-break: break-word;
+}
+
+/* Explore page */
+.explore-page {
+  padding: 64px 0;
+}
+
+.explore-header {
+  max-width: 720px;
+  margin: 0 auto 48px;
+  text-align: center;
+}
+
+.explore-title {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  color: var(--color-charcoal);
+  margin-bottom: 12px;
+}
+
+.explore-subtitle {
+  color: var(--color-gold);
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+.explore-intro {
+  color: var(--color-muted);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+/* Blog page */
+.blog-page {
+  padding: 64px 0;
+}
+
+.blog-header {
+  max-width: 720px;
+  margin: 0 auto 48px;
+  text-align: center;
+}
+
+.blog-title {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  color: var(--color-charcoal);
+  margin-bottom: 12px;
+}
+
+.blog-subtitle {
+  color: var(--color-gold);
+  font-size: 1.1rem;
+  margin-bottom: 0;
+}
+
+/* Not found (404) page */
+.not-found-page {
+  padding: 96px 0;
+  text-align: center;
+}
+
+.not-found-title {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  color: var(--color-charcoal);
+  margin-bottom: 12px;
+}
+
+.not-found-text {
+  color: var(--color-muted);
+  font-size: 1.05rem;
+  margin-bottom: 32px;
+}
+
+.not-found-button {
+  background-color: var(--color-gold);
+  border-color: var(--color-gold);
+  color: var(--color-white);
+}
+
+/* Footer */
+.footer {
+  background-color: var(--color-charcoal);
+  color: var(--color-white);
+  padding: 56px 0 24px;
+  margin-top: 64px;
+}
+
+.footer-brand {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  letter-spacing: 0.06em;
+  margin-bottom: 12px;
+}
+
+.footer-description {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  max-width: 320px;
+}
+
+.footer-heading {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  color: var(--color-gold);
+  margin-bottom: 16px;
+}
+
+.footer-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-list li {
+  margin-bottom: 10px;
+}
+
+.footer-link {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.95rem;
+}
+
+.footer-link:hover {
+  color: var(--color-gold);
+}
+
+.footer-address {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.95rem;
+}
+
+.footer-copyright {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.85rem;
+  margin: 40px 0 0;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
